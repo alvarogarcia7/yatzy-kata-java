@@ -11,7 +11,12 @@ public class Yatzee {
 
     public void play() {
         console.print("Category: Ones");
-        diceThrower.roll();
-        console.print("Dice: D1:2 D2:4 D3:1 D4:6 D5:1");
+        console.print(String.format("Dice: D1:%s D2:%s D3:%s D4:%s D5:%d",
+                diceThrower.roll(),
+                diceThrower.roll(),
+                diceThrower.roll(),
+                diceThrower.roll(),
+                diceThrower.roll()
+                ));
     }
 }
