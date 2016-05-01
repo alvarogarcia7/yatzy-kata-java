@@ -3,7 +3,7 @@ package com.dodevjutsu.kata.yatzee.test;
 public class Yatzee {
     private final Console console;
 
-    public Yatzee(Console console) {
+    public Yatzee(Console console, DiceThrower diceThrower) {
         this.console = console;
     }
 
