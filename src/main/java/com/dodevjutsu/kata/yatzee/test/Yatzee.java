@@ -16,18 +16,16 @@ public class Yatzee {
             final int roll = diceThrower.roll();
             sides[i] = roll;
         }
-        console.print(String.format("Dice: D1:%s D2:%s D3:%s D4:%s D5:%d",
-                sides[0],
-                sides[1],
-                sides[2],
-                sides[3],
-                sides[4]
-        ));
+        printSides(sides);
         console.print("[1] Dice to re-run: ");
         console.read(); // 1 2 4 = 0 1 3
         sides[0] = diceThrower.roll();
         sides[1] = diceThrower.roll();
         sides[3] = diceThrower.roll();
+        printSides(sides);
+    }
+
+    private void printSides(int[] sides) {
         console.print(String.format("Dice: D1:%s D2:%s D3:%s D4:%s D5:%d",
                 sides[0],
                 sides[1],
