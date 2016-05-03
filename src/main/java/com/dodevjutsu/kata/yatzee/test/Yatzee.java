@@ -30,8 +30,7 @@ public class Yatzee {
 
     private void reRunUserSides(int[] sides) {
         final String diceToReRunRepresentation = console.read();
-        final List<Integer> diceToReRun = parseDiceToReRun(diceToReRunRepresentation);
-        for (Integer dieNumber : diceToReRun) {
+        for (Integer dieNumber : parseDiceToReRun(diceToReRunRepresentation)) {
             sides[toIndex(dieNumber)] = diceThrower.roll();
         }
     }
