@@ -12,10 +12,7 @@ public class Yatzee {
     public void play() {
         console.print("Category: Ones");
         int[] sides = new int[5];
-        for (int i = 0; i < sides.length; i++) {
-            final int roll = diceThrower.roll();
-            sides[i] = roll;
-        }
+        rollAllSides(sides);
         printSides(sides);
         console.print("[1] Dice to re-run: ");
         console.read(); // 1 2 4 = 0 1 3
@@ -23,6 +20,13 @@ public class Yatzee {
         sides[1] = diceThrower.roll();
         sides[3] = diceThrower.roll();
         printSides(sides);
+    }
+
+    private void rollAllSides(int[] sides) {
+        for (int i = 0; i < sides.length; i++) {
+            final int roll = diceThrower.roll();
+            sides[i] = roll;
+        }
     }
 
     private void printSides(int[] sides) {
