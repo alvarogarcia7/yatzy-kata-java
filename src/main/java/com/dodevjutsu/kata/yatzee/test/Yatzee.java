@@ -24,7 +24,16 @@ public class Yatzee {
                 sides[4]
         ));
         console.print("[1] Dice to re-run: ");
-        console.read();
-        console.print("Dice: D1:1 D2:5 D3:1 D4:2 D5:1");
+        console.read(); // 1 2 4 = 0 1 3
+        sides[0] = diceThrower.roll();
+        sides[1] = diceThrower.roll();
+        sides[3] = diceThrower.roll();
+        console.print(String.format("Dice: D1:%s D2:%s D3:%s D4:%s D5:%d",
+                sides[0],
+                sides[1],
+                sides[2],
+                sides[3],
+                sides[4]
+        ));
     }
 }
