@@ -18,10 +18,10 @@ public class Yatzee {
     public void play() {
         console.print("Category: Ones");
         sides.roll(diceThrower);
-        printSides();
+        sides.print(console);
         console.print("[1] Dice to re-run: ");
         reRunUserSides();
-        printSides();
+        sides.print(console);
         console.print("[2] Dice to re-run: ");
         console.read();
     }
@@ -47,17 +47,5 @@ public class Yatzee {
         return dieIndex;
     }
 
-    private void printSides() {
-        console.print(String.format("Dice: D1:%s D2:%s D3:%s D4:%s D5:%d",
-                getSide(0),
-                getSide(1),
-                getSide(2),
-                getSide(3),
-                getSide(4)
-        ));
-    }
 
-    public int getSide(int at) {
-        return sides.at(at);
-    }
 }

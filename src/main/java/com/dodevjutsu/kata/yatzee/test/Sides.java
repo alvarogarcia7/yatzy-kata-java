@@ -28,4 +28,18 @@ public class Sides {
             put(i, diceThrower.roll());
         }
     }
+
+    public void print(Console console) {
+        console.print(String.format("Dice: D1:%s D2:%s D3:%s D4:%s D5:%d",
+                getSide(0),
+                getSide(1),
+                getSide(2),
+                getSide(3),
+                getSide(4)
+        ));
+    }
+
+    public int getSide(int at) {
+        return this.at(at);
+    }
 }
