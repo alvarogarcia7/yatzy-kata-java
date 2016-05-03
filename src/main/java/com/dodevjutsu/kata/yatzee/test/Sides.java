@@ -22,4 +22,10 @@ public class Sides {
     public int at(int at) {
         return values.get(at);
     }
+
+    public void roll(DiceThrower diceThrower) {
+        for (int i = 0; i < 5; i++) {
+            put(i, diceThrower.roll());
+        }
+    }
 }
