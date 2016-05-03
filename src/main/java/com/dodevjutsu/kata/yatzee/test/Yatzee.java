@@ -18,5 +18,6 @@ public class Yatzee {
                 diceThrower.roll(),
                 diceThrower.roll()
                 ));
+        console.print("[1] Dice to re-run: ");
     }
 }
