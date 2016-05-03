@@ -48,4 +48,19 @@ public class Sides {
         final int dieIndex = dieNumber - 1;
         return dieIndex;
     }
+
+    public void reRun(Console console, final DiceThrower diceThrower) {
+        reRunUserSides(console, diceThrower);
+    }
+
+    private void reRunUserSides(Console console, final DiceThrower diceThrower) {
+        final String diceToReRunRepresentation = console.read();
+        final List<Integer> integers = parseDiceToReRun(diceToReRunRepresentation);
+        this.roll(integers, diceThrower);
+    }
+
+    private List<Integer> parseDiceToReRun(String diceToReRunRepresentation) {
+        String[] diceToReRunAsString = diceToReRunRepresentation.split(" ");
+        return Stream.of(diceToReRunAsString).map(x->x.substring(1)).map(Integer::valueOf).collect(Collectors.toList());
+    }
 }
