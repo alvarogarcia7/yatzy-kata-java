@@ -1,5 +1,12 @@
 package com.dodevjutsu.kata.yatzee.test;
 
+import org.bouncycastle.util.io.Streams;
+
+import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 public class Yatzee {
     private final Console console;
     private final DiceThrower diceThrower;
@@ -22,10 +29,17 @@ public class Yatzee {
     }
 
     private void reRunUserSides(int[] sides) {
-        console.read(); // 1 2 4 = 0 1 3
-        sides[0] = diceThrower.roll();
-        sides[1] = diceThrower.roll();
-        sides[3] = diceThrower.roll();
+        final String diceToReRunRepresentation = console.read();
+        String[] diceToReRunAsString = diceToReRunRepresentation.split(" ");
+        final List<Integer> diceToReRun = Stream.of(diceToReRunAsString).map(x->x.substring(1)).map(Integer::valueOf).collect(Collectors.toList());
+        for (Integer dieNumber : diceToReRun) {
+            sides[toIndex(dieNumber)] = diceThrower.roll();
+        }
+    }
+
+    private int toIndex(Integer dieNumber) {
+        final int dieIndex = dieNumber - 1;
+        return dieIndex;
     }
 
     private void rollAllSides(int[] sides) {
