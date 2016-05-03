@@ -29,7 +29,7 @@ public class Yatzee {
     private void reRunUserSides() {
         final String diceToReRunRepresentation = console.read();
         for (Integer dieNumber : parseDiceToReRun(diceToReRunRepresentation)) {
-            sides[toIndex(dieNumber)] = diceThrower.roll();
+            getSides()[toIndex(dieNumber)] = diceThrower.roll();
         }
     }
 
@@ -44,19 +44,23 @@ public class Yatzee {
     }
 
     private void rollAllSides() {
-        for (int i = 0; i < sides.length; i++) {
+        for (int i = 0; i < getSides().length; i++) {
             final int roll = diceThrower.roll();
-            sides[i] = roll;
+            getSides()[i] = roll;
         }
     }
 
     private void printSides() {
         console.print(String.format("Dice: D1:%s D2:%s D3:%s D4:%s D5:%d",
-                sides[0],
-                sides[1],
-                sides[2],
-                sides[3],
-                sides[4]
+                getSides()[0],
+                getSides()[1],
+                getSides()[2],
+                getSides()[3],
+                getSides()[4]
         ));
+    }
+
+    public int[] getSides() {
+        return sides;
     }
 }
