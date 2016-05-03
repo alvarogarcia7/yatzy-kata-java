@@ -15,10 +15,6 @@ public class Sides {
         values.put(index, value);
     }
 
-    public int at(int at) {
-        return values.get(at);
-    }
-
     public void roll(DiceThrower diceThrower) {
         for (int i = 0; i < 5; i++) {
             put(i, diceThrower.roll());
@@ -36,6 +32,6 @@ public class Sides {
     }
 
     public int getSide(int at) {
-        return this.at(at);
+        return values.get(at);
     }
 }
