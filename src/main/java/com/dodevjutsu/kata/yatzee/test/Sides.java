@@ -14,7 +14,7 @@ public class Sides {
         values = new HashMap<>();
     }
 
-    public void put(int index, int value) {
+    private void put(int index, int value) {
         values.put(index, value);
     }
 
