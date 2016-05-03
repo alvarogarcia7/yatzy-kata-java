@@ -7,12 +7,12 @@ import java.util.stream.Stream;
 public class Yatzee {
     private final Console console;
     private final DiceThrower diceThrower;
-    private final int[] sides;
+    private Sides sides;
 
     public Yatzee(Console console, DiceThrower diceThrower) {
         this.console = console;
         this.diceThrower = diceThrower;
-        sides = new int[5];
+        sides = new Sides();
     }
 
     public void play() {
@@ -29,8 +29,12 @@ public class Yatzee {
     private void reRunUserSides() {
         final String diceToReRunRepresentation = console.read();
         for (Integer dieNumber : parseDiceToReRun(diceToReRunRepresentation)) {
-            getSides()[toIndex(dieNumber)] = diceThrower.roll();
+            setSides(toIndex(dieNumber), diceThrower.roll());
         }
+    }
+
+    private void setSides(int index, int value) {
+        sides.put(index, value);
     }
 
     private List<Integer> parseDiceToReRun(String diceToReRunRepresentation) {
@@ -44,23 +48,22 @@ public class Yatzee {
     }
 
     private void rollAllSides() {
-        for (int i = 0; i < getSides().length; i++) {
-            final int roll = diceThrower.roll();
-            getSides()[i] = roll;
+        for (int i = 0; i < 5; i++) {
+            setSides(i, diceThrower.roll());
         }
     }
 
     private void printSides() {
         console.print(String.format("Dice: D1:%s D2:%s D3:%s D4:%s D5:%d",
-                getSides()[0],
-                getSides()[1],
-                getSides()[2],
-                getSides()[3],
-                getSides()[4]
+                getSide(0),
+                getSide(1),
+                getSide(2),
+                getSide(3),
+                getSide(4)
         ));
     }
 
-    public int[] getSides() {
-        return sides;
+    public int getSide(int at) {
+        return sides.at(at);
     }
 }
