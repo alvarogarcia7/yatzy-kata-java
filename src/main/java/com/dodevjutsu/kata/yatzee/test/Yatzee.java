@@ -10,15 +10,16 @@ import java.util.stream.Stream;
 public class Yatzee {
     private final Console console;
     private final DiceThrower diceThrower;
+    private final int[] sides;
 
     public Yatzee(Console console, DiceThrower diceThrower) {
         this.console = console;
         this.diceThrower = diceThrower;
+        sides = new int[5];
     }
 
     public void play() {
         console.print("Category: Ones");
-        int[] sides = new int[5];
         rollAllSides(sides);
         printSides(sides);
         console.print("[1] Dice to re-run: ");
