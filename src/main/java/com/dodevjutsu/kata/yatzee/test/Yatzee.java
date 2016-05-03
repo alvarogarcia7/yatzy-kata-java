@@ -28,24 +28,12 @@ public class Yatzee {
 
     private void reRunUserSides() {
         final String diceToReRunRepresentation = console.read();
-        for (Integer dieNumber : parseDiceToReRun(diceToReRunRepresentation)) {
-            setSides(toIndex(dieNumber), diceThrower.roll());
-        }
-    }
-
-    private void setSides(int index, int value) {
-        sides.put(index, value);
+        final List<Integer> integers = parseDiceToReRun(diceToReRunRepresentation);
+        sides.roll(integers, diceThrower);
     }
 
     private List<Integer> parseDiceToReRun(String diceToReRunRepresentation) {
         String[] diceToReRunAsString = diceToReRunRepresentation.split(" ");
         return Stream.of(diceToReRunAsString).map(x->x.substring(1)).map(Integer::valueOf).collect(Collectors.toList());
     }
-
-    private int toIndex(Integer dieNumber) {
-        final int dieIndex = dieNumber - 1;
-        return dieIndex;
-    }
-
-
 }

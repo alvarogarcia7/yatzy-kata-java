@@ -1,7 +1,10 @@
 package com.dodevjutsu.kata.yatzee.test;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Sides {
 
@@ -33,5 +36,16 @@ public class Sides {
 
     private int getSide(int at) {
         return values.get(at);
+    }
+
+    public void roll(List<Integer> integers, DiceThrower diceThrower) {
+        for (Integer dieNumber : integers) {
+            values.put(toIndex(dieNumber), diceThrower.roll());
+        }
+    }
+
+    private int toIndex(Integer dieNumber) {
+        final int dieIndex = dieNumber - 1;
+        return dieIndex;
     }
 }
