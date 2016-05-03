@@ -31,7 +31,7 @@ public class Sides {
         ));
     }
 
-    public int getSide(int at) {
+    private int getSide(int at) {
         return values.get(at);
     }
 }
