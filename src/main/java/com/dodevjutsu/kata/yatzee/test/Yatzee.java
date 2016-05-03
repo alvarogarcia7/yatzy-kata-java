@@ -15,11 +15,15 @@ public class Yatzee {
         rollAllSides(sides);
         printSides(sides);
         console.print("[1] Dice to re-run: ");
+        reRunUserSides(sides);
+        printSides(sides);
+    }
+
+    private void reRunUserSides(int[] sides) {
         console.read(); // 1 2 4 = 0 1 3
         sides[0] = diceThrower.roll();
         sides[1] = diceThrower.roll();
         sides[3] = diceThrower.roll();
-        printSides(sides);
     }
 
     private void rollAllSides(int[] sides) {
