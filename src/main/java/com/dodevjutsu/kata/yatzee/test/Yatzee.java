@@ -30,11 +30,15 @@ public class Yatzee {
 
     private void reRunUserSides(int[] sides) {
         final String diceToReRunRepresentation = console.read();
-        String[] diceToReRunAsString = diceToReRunRepresentation.split(" ");
-        final List<Integer> diceToReRun = Stream.of(diceToReRunAsString).map(x->x.substring(1)).map(Integer::valueOf).collect(Collectors.toList());
+        final List<Integer> diceToReRun = parseDiceToReRun(diceToReRunRepresentation);
         for (Integer dieNumber : diceToReRun) {
             sides[toIndex(dieNumber)] = diceThrower.roll();
         }
+    }
+
+    private List<Integer> parseDiceToReRun(String diceToReRunRepresentation) {
+        String[] diceToReRunAsString = diceToReRunRepresentation.split(" ");
+        return Stream.of(diceToReRunAsString).map(x->x.substring(1)).map(Integer::valueOf).collect(Collectors.toList());
     }
 
     private int toIndex(Integer dieNumber) {
