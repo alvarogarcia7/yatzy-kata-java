@@ -17,6 +17,8 @@ public class Yatzee {
         console.print("[1] Dice to re-run: ");
         reRunUserSides(sides);
         printSides(sides);
+        console.print("[2] Dice to re-run: ");
+        console.read();
     }
 
     private void reRunUserSides(int[] sides) {
