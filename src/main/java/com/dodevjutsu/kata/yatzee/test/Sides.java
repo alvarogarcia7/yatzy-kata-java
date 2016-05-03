@@ -15,10 +15,6 @@ public class Sides {
         values.put(index, value);
     }
 
-    public int size() {
-        return values.size();
-    }
-
     public int at(int at) {
         return values.get(at);
     }
