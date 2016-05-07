@@ -1,29 +1,28 @@
 package com.dodevjutsu.kata.yatzee.test;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class Yatzee {
     private final Console console;
     private final DiceThrower diceThrower;
     private Sides sides;
+    private List<Throw> throws_;
 
     public Yatzee(Console console, DiceThrower diceThrower) {
         this.console = console;
         this.diceThrower = diceThrower;
         sides = new Sides();
+        this.throws_ = Arrays.asList(new Ones(), new Twos());
+    }
+
+    public void configureThrows(List<Throw> throws_) {
+        this.throws_ = throws_;
     }
 
     public void play() {
-        playOnes();
-    }
-
-    private void playOnes() {
-        console.print("Category: Ones");
-        sides.roll(diceThrower);
-        sides.print(console);
-        console.print("[1] Dice to re-run: ");
-        sides.reRun(console, diceThrower);
-        sides.print(console);
-        console.print("[2] Dice to re-run: ");
-        sides.reRun(console, diceThrower);
-        sides.print(console);
+        for (Throw current : throws_) {
+            current.play(console, sides, diceThrower);
+        }
     }
 }
