@@ -19,6 +19,7 @@ public class Yatzee {
         sides.reRun(console, diceThrower);
         sides.print(console);
         console.print("[2] Dice to re-run: ");
-        console.read();
+        sides.reRun(console, diceThrower);
+        sides.print(console);
     }
 }
