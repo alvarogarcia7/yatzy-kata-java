@@ -9,7 +9,7 @@ public class YatzeeTest {
     Mockery context = new Mockery();
 
     @Test
-    public void produces_game_output() throws Exception {
+    public void produces_game_output_for_ones() throws Exception {
 
         Console console = context.mock(Console.class);
         DiceThrower diceThrower = context.mock(DiceThrower.class);
