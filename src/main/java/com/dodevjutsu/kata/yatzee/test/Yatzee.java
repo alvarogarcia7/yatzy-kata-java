@@ -12,6 +12,10 @@ public class Yatzee {
     }
 
     public void play() {
+        playOnes();
+    }
+
+    private void playOnes() {
         console.print("Category: Ones");
         sides.roll(diceThrower);
         sides.print(console);
