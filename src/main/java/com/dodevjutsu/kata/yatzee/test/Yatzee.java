@@ -13,7 +13,7 @@ public class Yatzee {
         this.console = console;
         this.diceThrower = diceThrower;
         sides = new Sides();
-        this.throws_ = Arrays.asList(new Ones(), new Twos());
+        this.throws_ = Arrays.asList(new Ones(), new Twos(), new Threes());
     }
 
     public void configureThrows(List<Throw> throws_) {
