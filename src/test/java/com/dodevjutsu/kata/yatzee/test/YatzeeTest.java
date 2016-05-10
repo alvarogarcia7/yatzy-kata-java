@@ -1,10 +1,13 @@
 package com.dodevjutsu.kata.yatzee.test;
 
 import com.dodevjutsu.kata.yatzee.ConsoleInputReader;
+import com.dodevjutsu.kata.yatzee.Die;
 import com.dodevjutsu.kata.yatzee.DieRoller;
 import org.jmock.Expectations;
 import org.jmock.Mockery;
 import org.junit.Test;
+
+import static com.dodevjutsu.kata.yatzee.Die.*;
 
 public class YatzeeTest {
 
