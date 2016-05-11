@@ -13,7 +13,7 @@ public class ConsoleInputReader implements InputReader {
     }
 
     @Override
-    public List<Integer> getDiceToReRun() {
+    public List<Die> getDiceToReRun() {
         return new DiceReader(console.read()).extract();
     }
 }

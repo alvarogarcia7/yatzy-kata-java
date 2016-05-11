@@ -1,16 +1,12 @@
 package com.dodevjutsu.kata.yatzee;
 
 public enum Die {
-    FIRST(1),SECOND(2);
-
-
-    private final int value;
-
-    Die(int value) {
-        this.value = value;
+    FIRST,SECOND,THIRD, FOURTH, FIFTH;
+    public static Die nth(int index) {
+        return values()[index];
     }
 
-    public Integer value() {
-        return this.value;
+    public String asString() {
+        return "D" + (ordinal()+1);
     }
 }

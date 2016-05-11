@@ -1,20 +1,14 @@
 package com.dodevjutsu.kata.yatzee.test;
 
-import com.dodevjutsu.kata.yatzee.Dice;
-import com.dodevjutsu.kata.yatzee.DiceRoller;
-import com.dodevjutsu.kata.yatzee.Die;
-import com.dodevjutsu.kata.yatzee.DieRoller;
+import com.dodevjutsu.kata.yatzee.*;
 import org.jmock.Expectations;
 import org.jmock.Mockery;
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
-import static com.dodevjutsu.kata.yatzee.Die.*;
-import static com.dodevjutsu.kata.yatzee.Die.SECOND;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.core.Is.is;
+import static org.hamcrest.Matchers.is;
 
 public class DiceRollerShould {
 
@@ -22,43 +16,51 @@ public class DiceRollerShould {
 
     @Test
     public void roll_all_dice() throws Exception {
-
         DieRoller dieRoller = context.mock(DieRoller.class);
-
         DiceRoller diceRoller = new DiceRoller(dieRoller);
 
         context.checking(new Expectations() {{
             exactly(5).of(dieRoller).roll();
-            will(onConsecutiveCalls(returnValue(1),
-                    returnValue(2),
-                    returnValue(2),
-                    returnValue(3),
-                    returnValue(4)));
+            will(onConsecutiveCalls(
+                    returnValue(1), returnValue(2), returnValue(3), returnValue(4), returnValue(5)));
         }});
 
-        assertThat(diceRoller.rollAll(), is(new Dice(Arrays.asList(1, 2, 2, 3, 4))));
 
+        final Dice dice = dice(new Roll(Die.FIRST, 1),
+                new Roll(Die.SECOND, 2),
+                new Roll(Die.THIRD, 3),
+                new Roll(Die.FOURTH, 4),
+                new Roll(Die.FIFTH, 5));
+        assertThat(diceRoller.rollAll(), is(dice));
     }
 
+    private Dice dice(Roll... rolls) {
+        return new Dice(Arrays.asList(rolls));
+    }
 
     @Test
     public void roll_some_dice() throws Exception {
-
         DieRoller dieRoller = context.mock(DieRoller.class);
-
         DiceRoller diceRoller = new DiceRoller(dieRoller);
 
         context.checking(new Expectations() {{
-            exactly(2).of(dieRoller).roll();
-            will(onConsecutiveCalls(returnValue(5),
-                    returnValue(6)));
+            exactly(5).of(dieRoller).roll();
+            will(onConsecutiveCalls(
+                    returnValue(1), returnValue(3)));
         }});
 
-        final Dice previousDice = new Dice(Arrays.asList(2, 2, 2, 2, 2));
-        final Dice diceToReRun = Dice.fromDice(Arrays.asList(FIRST, SECOND));
-        final Dice reRunDice = new Dice(Arrays.asList(5, 6, 2, 2, 2));
-        assertThat(diceRoller.roll(previousDice, diceToReRun), is(reRunDice));
+        final Dice previousRoll = dice(new Roll(Die.FIRST, 5),
+                new Roll(Die.SECOND, 5),
+                new Roll(Die.THIRD, 5),
+                new Roll(Die.FOURTH, 5),
+                new Roll(Die.FIFTH, 5));
 
+        final Dice expectedRoll = dice(new Roll(Die.FIRST, 1),
+                new Roll(Die.SECOND, 3),
+                new Roll(Die.THIRD, 5),
+                new Roll(Die.FOURTH, 5),
+                new Roll(Die.FIFTH, 5));
+
+        assertThat(diceRoller.roll(previousRoll, Arrays.asList(Die.FIRST, Die.SECOND)), is(expectedRoll));
     }
-
 }

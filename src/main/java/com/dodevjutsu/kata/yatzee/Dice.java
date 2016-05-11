@@ -1,19 +1,37 @@
 package com.dodevjutsu.kata.yatzee;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 public class Dice {
-    private final List<Integer> sides;
+    private List<Roll> dice;
 
-    public Dice(List<Integer> sides) {
-        this.sides = sides;
+    public Dice(List<Roll> dice) {
+        this.dice = dice;
     }
 
-    public static Dice fromDice(List<Die> dice){
-        return new Dice(dice.stream().map(x -> x.value()).collect(Collectors.toList()));
+    public Dice dieAt(Die die, int side) {
+        List<Roll> result = replaceByDie(die, side);
+        return new Dice(result);
+    }
+
+    private List<Roll> replaceByDie(Die die, int side) {
+        List<Roll> result = new ArrayList<>();
+        for (Roll roll : dice) {
+            if (roll.die().equals(die)) {
+                roll = new Roll(die, side);
+            }
+            result.add(roll);
+        }
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("Dice{");
+        sb.append("dice=").append(dice);
+        sb.append('}');
+        return sb.toString();
     }
 
     @Override
@@ -23,27 +41,19 @@ public class Dice {
 
         Dice dice = (Dice) o;
 
-        return sides != null ? sides.equals(dice.sides) : dice.sides == null;
+        return this.dice != null ? this.dice.equals(dice.dice) : dice.dice == null;
 
     }
 
     @Override
     public int hashCode() {
-        return sides != null ? sides.hashCode() : 0;
+        return dice != null ? dice.hashCode() : 0;
     }
 
-    @Override
-    public String toString() {
-        final StringBuffer sb = new StringBuffer("Dice");
-        sb.append(sides);
-        return sb.toString();
-    }
-
-    public Dice roll(Dice diceToReRun, DieRoller dieRoller) {
-        Integer[] rollValues = sides.toArray(new Integer[0]);
-        for (Integer die : diceToReRun.sides) {
-            rollValues[die - 1] = dieRoller.roll();
-        }
-        return new Dice(Arrays.asList(rollValues));
+    public String asString() {
+        StringBuilder representation = new StringBuilder();
+        representation.append("Dice: ");
+        dice.stream().forEach(current -> representation.append(current.asString() + " "));
+        return representation.toString().trim();
     }
 }

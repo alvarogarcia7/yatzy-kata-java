@@ -1,6 +1,7 @@
 package com.dodevjutsu.kata.yatzee.test;
 
 import com.dodevjutsu.kata.yatzee.ConsoleInputReader;
+import com.dodevjutsu.kata.yatzee.Die;
 import org.jmock.Expectations;
 import org.jmock.Mockery;
 import org.junit.Test;
@@ -26,6 +27,6 @@ public class ConsoleInputReaderShould {
         }});
 
         assertThat(new ConsoleInputReader(console).getDiceToReRun(),
-                is(Arrays.asList(1, 2, 4)));
+                is(Arrays.asList(Die.FIRST, Die.SECOND, Die.FOURTH)));
     }
 }
