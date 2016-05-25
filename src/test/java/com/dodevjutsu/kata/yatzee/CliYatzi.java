@@ -19,6 +19,7 @@ public class CliYatzi {
         console.print(String.format("Dice: D1:%d D2:%d D3:%d D4:%d D5:%d", dice.toArray(new Integer[0])));
         console.print("[1] Dice to re-run:");
         userInput.read();
+        diceRoller.roll(3);
         console.print("Dice: D1:1 D2:5 D3:1 D4:2 D5:1");
         userInput.read();
         console.print("Dice: D1:1 D2:1 D3:1 D4:5 D5:1");
