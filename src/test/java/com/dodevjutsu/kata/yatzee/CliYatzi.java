@@ -4,7 +4,7 @@ public class CliYatzi {
     private final Console console;
     private final UserInput userInput;
 
-    public CliYatzi (final Console console, final UserInput userInput) {
+    public CliYatzi (final Console console, final UserInput userInput, final DiceRoller diceRoller) {
         this.console = console;
         this.userInput = userInput;
     }
