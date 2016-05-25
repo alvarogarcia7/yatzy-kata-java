@@ -16,5 +16,6 @@ public class CliYatzi {
         userInput.read();
         console.print("Dice: D1:1 D2:5 D3:1 D4:2 D5:1");
         userInput.read();
+        console.print("Dice: D1:1 D2:1 D3:1 D4:5 D5:1");
     }
 }
