@@ -33,6 +33,7 @@ public class AcceptanceTest {
             oneOf(console).print("[1] Dice to re-run:");
 
             oneOf(userInput).read(); will(returnValue("D1 D2 D4"));
+            oneOf(console).print("Dice: D1:1 D2:5 D3:1 D4:2 D5:1");
         }});
 
         cli.run();
