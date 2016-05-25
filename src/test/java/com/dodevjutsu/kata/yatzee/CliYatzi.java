@@ -21,13 +21,13 @@ public class CliYatzi {
         final int count = count(userInput.read());
         final List<Integer> firstReRun = diceRoller.roll(count);
         console.print("Dice: D1:1 D2:5 D3:1 D4:2 D5:1");
-        userInput.read();
-        final List<Integer> secondReRun = diceRoller.roll(2);
+        final int secondCount = count(userInput.read());
+        final List<Integer> secondReRun = diceRoller.roll(secondCount);
         console.print("Dice: D1:1 D2:1 D3:1 D4:5 D5:1");
         console.print("Category Ones score: 4");
     }
 
     private int count (final String reRunDice) {
-        return 3;
+        return reRunDice.split(" ").length;
     }
 }
