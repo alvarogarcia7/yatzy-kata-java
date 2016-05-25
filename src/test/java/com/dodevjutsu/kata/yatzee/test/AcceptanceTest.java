@@ -23,7 +23,7 @@ public class AcceptanceTest {
         cli = new CliYatzi(console);
 
         context.checking(new Expectations() {{
-            console.print("Category: Ones");
+            oneOf(console).print("Category: Ones");
         }});
 
         cli.run();
