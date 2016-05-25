@@ -37,6 +37,7 @@ public class AcceptanceTest {
             oneOf(userInput).read(); will(returnValue("D2 D4"));
             oneOf(console).print("Dice: D1:1 D2:1 D3:1 D4:5 D5:1");
 
+            oneOf(console).print("Category Ones score: 4");
         }});
 
         cli.run();
