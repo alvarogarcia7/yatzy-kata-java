@@ -13,16 +13,17 @@ public class AcceptanceTest {
     private Mockery context;
     private CliYatzi cli;
     private UserInput userInput;
+    private Console console;
 
     @Before
     public void setUp () {
         context = new Mockery();
         userInput = context.mock(UserInput.class);
+        console = context.mock(Console.class);
     }
 
     @Test
     public void happy_path () {
-        final Console console = context.mock(Console.class);
         cli = new CliYatzi(console, userInput);
 
         context.checking(new Expectations() {
